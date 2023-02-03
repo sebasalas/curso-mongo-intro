@@ -1,0 +1,5 @@
+use ("sample_training") // Utilizar BD sample_training.
+
+//db.zips.find({ state: "NY" }) // Listar todos los documentos de la colección "zips" que tengan valor "NY" en el campo state.
+
+db.zips.find({ state: "NY" }).count() // Contar cantidad de registros que cumplen con el criterio anterior.
