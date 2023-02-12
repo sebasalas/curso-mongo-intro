@@ -1,0 +1,12 @@
+use("platzi_store") // Si la db no está creada, la crea. Lo mismo con las colecciones.
+
+db.products.insertOne({
+    _id: 1, 
+    name: "Product 1",
+    price: 1000
+})
+db.products.insertOne({
+    _id: 2,
+    name: "Product 2",
+    price: 100
+})
