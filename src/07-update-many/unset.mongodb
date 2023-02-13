@@ -1,0 +1,15 @@
+use("sample_training")
+
+db.zips.find({ city: "CLEVELAND" }).count()
+
+// $unset
+db.zips.updateMany(
+    // query
+    { city: "CLEVELAND" },
+    // update - operators
+    {
+        $unset: {
+            my_data: ""
+        }
+    }
+)
