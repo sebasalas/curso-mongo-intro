@@ -1,0 +1,38 @@
+use("platzi_store")
+
+/*
+Actualiza todos los documentos en la colección 'iot' 
+donde el campo sensor tiene el valor "A001", 
+eliminando cualquier elemento con valores mayores o iguales a 3 
+del campo array 'readings'.
+*/
+db.iot.updateMany(
+    // query
+    { sensor: "A001" },
+    // update
+    {
+        $pull: {
+            readings: { $gte: 3 }
+        }
+    }
+)
+
+/*
+Actualiza todos los documentos 
+donde el sensor no es igual a A001
+y date es mayor o igual a 2022-01-02.
+Crea un nuevo campo processed con valor true 
+y agrega el valor 5 al array readings.
+*/
+db.iot.updateMany(
+  // query
+  {
+    sensor: { $ne: "A001" },
+    date: { $gte: "2022-01-02" }
+  },
+  // update
+  {
+    $set: { processed: true },
+    $push: { readings: 5 }
+  }
+)
