@@ -1,11 +1,11 @@
 # Up mongodb
 
 ```sh
-docker-compose up -d mongodb
+docker compose up -d mongodb
 ```
 
 # Check
 
 ```sh
-docker-compose ps
+docker compose ps
 ```
