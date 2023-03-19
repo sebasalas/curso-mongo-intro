@@ -1,0 +1,32 @@
+use("platzi_store")
+
+// Using $gt (>) & $gte (>=)
+db.inventory.find({ qty: { $gt: 20 } }) // > 20
+db.inventory.find({ qty: { $gte: 20 } }) // >= 20
+
+// Using $lt (<) & $lte (<=)
+db.inventory.find({ qty: { $lt: 20 } }) // < 20
+db.inventory.find({ qty: { $lte: 20 } }) // <= 20
+
+// Join
+db.inventory.find({ qty: { $gte: 25, $lte: 35 } }) // >= 25 && <= 35
+db.inventory.find({ qty: { $gte: 20, $lte: 25 } }) // >= 20 && <= 25
+// item.name = "ab" && qty >= 20 && qty <= 25
+db.inventory.find({ 
+    item: { name: "ab" }, 
+    qty: { $gte: 20, $lte: 25 } 
+}) 
+db.inventory.find({ 
+    "item.name": "ab", 
+    qty: { $gte: 20, $lte: 25 } 
+})
+// item.code = "123" && qty >= 20 && qty <= 25
+db.inventory.find({ 
+    "item.code": "123", 
+    qty: { $gte: 20, $lte: 25 } 
+})
+// item.code <> "123" && qty >= 20 && qty <= 25
+db.inventory.find({ 
+    "item.code": { $ne: "123" }, 
+    qty: { $gte: 20, $lte: 25 } 
+})
